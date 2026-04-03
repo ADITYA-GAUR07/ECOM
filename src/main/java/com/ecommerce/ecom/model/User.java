@@ -16,8 +16,8 @@ import java.util.Set;
 @Data
 @Table( name = "users",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"username"}),
-                @UniqueConstraint(columnNames = {"email"})
+                @UniqueConstraint(columnNames = "username"),
+                @UniqueConstraint(columnNames = "email")
         }
 )
 public class User {
@@ -43,7 +43,7 @@ public class User {
     @Column(name="password")
     private String password;
 
-    public User(String email, String password, String userName) {
+    public User(String userName, String email, String password) {
         this.email = email;
         this.password = password;
         this.userName = userName;
@@ -51,12 +51,11 @@ public class User {
 
     @Getter
     @Setter
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-                fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
-                joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "role_id")) //I think this needs change
-    private Set<Role> roles =  new HashSet<>();
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     @Getter
     @Setter
