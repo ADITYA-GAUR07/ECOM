@@ -7,7 +7,6 @@ import com.ecommerce.ecom.repository.RoleRepository;
 import com.ecommerce.ecom.repository.UserRepository;
 import com.ecommerce.ecom.security.jwt.*;
 import com.ecommerce.ecom.security.services.UserDetailsImpl;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
